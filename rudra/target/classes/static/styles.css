@@ -1,0 +1,134 @@
+body {
+	
+	
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2; 
+    color: rgb(61, 26, 34);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  	background-image:url('/image/ques.jpg');
+  	background-size:cover;
+
+}
+
+
+
+.quiz-container,
+.result-container {
+
+  background-color: #ebf5fb ;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 80%;
+    max-width: 700px;
+    margin: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+h1 {
+    font-size: 36px;
+    color: #4CAF50; 
+    margin-bottom: 30px;
+}
+
+
+.question-container {
+    margin-bottom: 20px;
+}
+
+
+.question-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    font-size: 18px;
+    text-align: left;
+}
+
+label {
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+
+input[type="radio"] {
+    margin-left: 15px;
+    accent-color: #4CAF50;
+    cursor: pointer;
+}
+
+/* Submit button styling */
+.submit-button-container {
+    margin-top: 30px;
+}
+
+button {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+.result {
+    font-size: 24px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+
+.correct {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+}
+
+
+.incorrect {
+    background-color: #F44336;
+    color: white;
+    font-weight: bold;
+}
+
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

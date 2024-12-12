@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Results</title>
+    <style>
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #4CAF50, #f2f2f2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .result-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            font-size: 1.5em;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .correct {
+            background-color: #8BC34A;
+            color: white;
+        }
+
+        .incorrect {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .details {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .details h2 {
+            color: #4CAF50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+
+        .question span {
+            font-weight: bold;
+        }
+
+        .correct-status {
+            color: #8BC34A;
+            font-weight: bold;
+        }
+
+        .incorrect-status {
+            color: #F44336;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Quiz Results</h1>
+        <div class="result correct">
+            Correct Answers: <span th:text="${correctCount}"></span>
+        </div>
+        <div class="result incorrect">
+            Incorrect Answers: <span th:text="${incorrectCount}"></span>
+        </div>
+        <div class="details">
+            <h2>Answer Details</h2>
+            <div th:each="question : ${questions}" class="question">
+                <p><strong>Q:</strong> <span th:text="${question.questionText}"></span></p>
+                <p><strong>Correct Answer:</strong> <span th:text="${question.correctAnswer}"></span></p>
+                <p><strong>Your Answer:</strong> <span th:text="${question.yourAnswer}"></span></p>
+                <p class="status" th:classappend="${question.correctAnswer == question.yourAnswer} ? 'correct-status' : 'incorrect-status'">
+                    <span th:text="${question.correctAnswer == question.yourAnswer ? 'Correct' : 'Incorrect'}"></span>
+                </p>
+                <hr>
+            </div>
+        </div>
+        <a href="/quiz"><button>Take Quiz Again</button></a>
+    </div>
+</body>
+</html>

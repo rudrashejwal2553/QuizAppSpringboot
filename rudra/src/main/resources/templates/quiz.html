@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Take Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="quiz-container fade-in">
+    <h1>Quiz</h1>
+
+    <form action="/submit" method="post">
+        <div th:each="question : ${questions}">
+            <div class="question-container">
+                <p class="question-text" th:text="${question.questionText}"></p>
+                <div class="options">
+                    <label>
+                        <input type="radio" th:name="'answer_' + ${question.id}" value="A">
+                        <span th:text="${question.optionA}"></span>
+                    </label>
+                    <label>
+                        <input type="radio" th:name="'answer_' + ${question.id}" value="B">
+                        <span th:text="${question.optionB}"></span>
+                    </label>
+                    <label>
+                        <input type="radio" th:name="'answer_' + ${question.id}" value="C">
+                        <span th:text="${question.optionC}"></span>
+                    </label>
+                    <label>
+                        <input type="radio" th:name="'answer_' + ${question.id}" value="D">
+                        <span th:text="${question.optionD}"></span>
+                    </label>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="submit-button-container">
+            <button type="submit">Submit Quiz</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
